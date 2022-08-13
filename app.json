@@ -24,7 +24,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/logo.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.mrsingh2000.weatherapp"
     },
     "web": {
       "favicon": "./assets/logo.png"

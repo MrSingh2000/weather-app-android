@@ -6,7 +6,7 @@ import axios from 'axios';
 
 export default function SearchBar(props) {
     // get weatherDetails state from the props
-    const {firstLoad, setFirstLoad, setWeatherDetails, setLoading, city, setCity, location, setForcastWeather } = { ...props };
+    const {firstLoad, setFirstLoad, setWeatherDetails, setLoading, city, setCity, location, setForcastWeather, setForcastHour } = { ...props };
 
     const getWeather = () => {
         setLoading(true);
@@ -23,13 +23,19 @@ export default function SearchBar(props) {
                 weather: res.data.current.condition.text,
                 wind: res.data.current.wind_kph,
                 isDay: res.data.current.is_day,
+                cloud: res.data.current.cloud,
+                pressure: res.data.current.pressure_mb,
+                sunrise: res.data.forecast.forecastday[0].astro.sunrise,
+                sunset: res.data.forecast.forecastday[0].astro.sunset,
             });
             setForcastWeather({
                 humidity: res.data.forecast.forecastday[0].day.avghumidity,
                 temp: res.data.forecast.forecastday[0].day.avgtemp_c,
                 weather: res.data.forecast.forecastday[0].day.condition.text,
                 wind: res.data.forecast.forecastday[0].day.maxwind_kph,
-            })
+            });
+            // console.log(res.data.forecast.forecastday[0].hour);
+            setForcastHour([...res.data.forecast.forecastday[0].hour])
             setLoading(false);
         }).catch((err) => {
             console.log(err);
@@ -44,7 +50,7 @@ export default function SearchBar(props) {
 
 
     return (
-        <SafeAreaView style={{ flexDirection: 'row', marginTop: 10 }}>
+        <SafeAreaView style={{ flexDirection: 'row', margin: 10 }}>
             <TextInput placeholder="Search a location" onChangeText={setCity} style={styles.input} />
             <View onTouchStart={getWeather} accessible={true} style={{ width: 50 }}>
                 <EvilIcons name="search" size={45} color="black" />

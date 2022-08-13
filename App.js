@@ -8,12 +8,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import About from './components/About';
 import logo from './assets/logo.png';
+import HomeNew from './components/HomeNew';
 
 const Stack = createNativeStackNavigator();
 
 
 export default function App() {
-  const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState("London");
   const [firstLoad, setFirstLoad] = useState(true);
 
 
@@ -23,24 +24,29 @@ export default function App() {
         style={{ width: 40, height: 40 }}
         source={require('./assets/logo.png')}
       />
-      <Text style={{fontSize: 20, marginLeft: 10}}>Weather-Hop</Text>
+      <Text style={{ fontSize: 20, marginLeft: 10 }}>Weather-Hop</Text>
     </>
     );
   }
 
 
   // get user location when the app is started
-  useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-        return;
-      }
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-    })();
-  }, [])
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       let { status } = await Location.requestForegroundPermissionsAsync();
+  //       if (status !== 'granted') {
+  //         setErrorMsg('Permission to access location was denied');
+  //         return;
+  //       }
+  //       let location = await Location.getCurrentPositionAsync({});
+  //       setLocation(location);
+  //     } catch (error) {
+  //       console.log("Permission Denied");
+  //       setLocation("London");
+  //     }
+  //   })();
+  // }, [])
 
   return !location ? (
     <View style={styles.container}>
@@ -63,7 +69,7 @@ export default function App() {
               },
               headerTitle: (props) => <LogoTitle {...props} />
             }}>
-            {(props) => <Home {...props}
+            {(props) => <HomeNew {...props}
               location={location}
               firstLoad={firstLoad}
               setFirstLoad={setFirstLoad}

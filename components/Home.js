@@ -48,7 +48,6 @@ function Home(props) {
         }
     }
 
-
     useEffect(() => {
         setBg();
     }, [weatherDetails])

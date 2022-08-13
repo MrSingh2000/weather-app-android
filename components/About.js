@@ -54,15 +54,17 @@ function About() {
                         {/* <Text style={{fontSize: 30}}>
                             About The Application
                         </Text> */}
-                        <Text style={{fontSize: 15, padding: 20}}>
+                        <Text style={{ fontSize: 15, padding: 20 }}>
                             Weather-Hop is a weather application which serves the latest weather directly on to your handset.
+                        </Text>
+                        <Text style={{ fontSize: 15, padding: 20 }}>
                             Please accept the location permissions to help the application get your current location and give you the
                             weather details with full ease.
                         </Text>
-                        <Text style={{fontSize: 15, marginBottom: 50}}>
+                        <Text style={{ fontSize: 15, marginBottom: 50 }}>
                             This application is made using React Native.
                         </Text>
-                        <Text style={{fontSize: 20}}>
+                        <Text style={{ fontSize: 20 }}>
                             Contact:
                         </Text>
                         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
