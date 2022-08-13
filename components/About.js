@@ -51,9 +51,9 @@ function About() {
                 <ScrollView>
                     <View style={styles.container}>
 
-                        <Text style={{fontSize: 30}}>
+                        {/* <Text style={{fontSize: 30}}>
                             About The Application
-                        </Text>
+                        </Text> */}
                         <Text style={{fontSize: 15, padding: 20}}>
                             Weather-Hop is a weather application which serves the latest weather directly on to your handset.
                             Please accept the location permissions to help the application get your current location and give you the

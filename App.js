@@ -74,9 +74,9 @@ export default function App() {
             name="About"
             component={About}
             options={{
-              title: 'About section',
+              title: 'About',
               headerStyle: {
-                backgroundColor: '#f4511e',
+                backgroundColor: '#B0D0D3',
               },
               headerTintColor: '#fff',
               headerTitleStyle: {
