@@ -6,7 +6,7 @@ import axios from 'axios';
 
 export default function SearchBar(props) {
     // get weatherDetails state from the props
-    const {firstLoad, setFirstLoad, setWeatherDetails, setLoading, city, setCity, location, setForcastWeather, setForcastHour } = { ...props };
+    const { firstLoad, setFirstLoad, setWeatherDetails, setLoading, city, setCity, setForcastWeather, setForcastHour } = { ...props };
 
     const getWeather = () => {
         setLoading(true);
@@ -31,10 +31,9 @@ export default function SearchBar(props) {
             setForcastWeather({
                 humidity: res.data.forecast.forecastday[0].day.avghumidity,
                 temp: res.data.forecast.forecastday[0].day.avgtemp_c,
-                weather: res.data.forecast.forecastday[0].day.condition.text,
                 wind: res.data.forecast.forecastday[0].day.maxwind_kph,
+                uv: res.data.forecast.forecastday[0].day.uv,
             });
-            // console.log(res.data.forecast.forecastday[0].hour);
             setForcastHour([...res.data.forecast.forecastday[0].hour])
             setLoading(false);
         }).catch((err) => {
@@ -43,7 +42,7 @@ export default function SearchBar(props) {
         })
     }
 
-    if(firstLoad === true){
+    if (firstLoad === true) {
         getWeather();
         setFirstLoad(false);
     }

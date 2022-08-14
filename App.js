@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Image, Text, View, ActivityIndicator } from 'react-native';
+import { Pressable, StyleSheet, Image, Text, View, ActivityIndicator } from 'react-native';
 import { API_KEY } from "@env";
 import Home from './components/Home';
 import { useEffect, useState } from 'react';
@@ -7,16 +7,15 @@ import * as Location from 'expo-location';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import About from './components/About';
-import logo from './assets/logo.png';
+import { AntDesign } from '@expo/vector-icons';
 import HomeNew from './components/HomeNew';
 
 const Stack = createNativeStackNavigator();
 
 
 export default function App() {
-  const [location, setLocation] = useState("London");
+  const [location, setLocation] = useState(null);
   const [firstLoad, setFirstLoad] = useState(true);
-
 
   function LogoTitle() {
     return (<>
@@ -31,22 +30,22 @@ export default function App() {
 
 
   // get user location when the app is started
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       let { status } = await Location.requestForegroundPermissionsAsync();
-  //       if (status !== 'granted') {
-  //         setErrorMsg('Permission to access location was denied');
-  //         return;
-  //       }
-  //       let location = await Location.getCurrentPositionAsync({});
-  //       setLocation(location);
-  //     } catch (error) {
-  //       console.log("Permission Denied");
-  //       setLocation("London");
-  //     }
-  //   })();
-  // }, [])
+  useEffect(() => {
+    (async () => {
+      try {
+        let { status } = await Location.requestForegroundPermissionsAsync();
+        if (status !== 'granted') {
+          setErrorMsg('Permission to access location was denied');
+          return;
+        }
+        let location = await Location.getCurrentPositionAsync({});
+        setLocation(location);
+      } catch (error) {
+        console.log("Permission Denied");
+        setLocation("London");
+      }
+    })();
+  }, [])
 
   return !location ? (
     <View style={styles.container}>
