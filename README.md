@@ -52,8 +52,10 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+<a href="https://drive.google.com/file/d/1YGo4XrOvms0Cvvp2sXN7_ytXmULr4Pu0/view?usp=sharing">
+<img src="readme/spash.jpg" alt="drawing" width="250"/>
+</a>
 
-[![Product Name Screen Shot][product-screenshot]](https://drive.google.com/file/d/1YGo4XrOvms0Cvvp2sXN7_ytXmULr4Pu0/view?usp=sharing)
 
 A simple yet usefull weather application made using React Native including various features.
 
@@ -133,7 +135,8 @@ Installing latest Package Manager
 
 For demonstration purposes some screenshots of the application are attached below.
 
-![Homepage][product-homepage]
+
+<img src="readme/2.jpg" alt="drawing" width="250"/>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
